@@ -1,0 +1,18 @@
+.calendar-list
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.prev
+{
+    display: inline-block;
+}
+.date-name
+{
+    display: inline-block;
+}
+.next
+{
+display: inline-block;
+}
