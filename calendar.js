@@ -7,21 +7,27 @@ getDaysInMonth = (year, month) =>{
 getFirstDayinMonth = (year, month) =>{
     return new Date(year, month, 1).getDay();
 }
-
-function CalenendarInit(year, month)
+let date = new Date();
+let act_month;
+let act_year;
+act_month = date.getMonth();
+act_year = date.getFullYear();
+function Calendar(year, month)
 {
-    let date = new Date();
-    let daysInMonth = getDaysInMonth(date.getFullYear(), date.getMonth()+1);
+    let data = new Date(year, month);
+    let daysInMonth = getDaysInMonth(data.getFullYear(), data.getMonth());
     let calendarList = document.querySelector('.calendar-list');
-    let firstDayInMonthPosition = getFirstDayinMonth(date.getFullYear(), date.getMonth())
-    document.querySelector('.date-name').innerHTML = `${date.getFullYear()} ${months[date.getMonth()]}`
+    calendarList.innerHTML = "";
+    let firstDayInMonthPosition = getFirstDayinMonth(data.getFullYear(), data.getMonth())
+    console.log(data)
+    document.querySelector('.date-name').innerHTML = `${data.getFullYear()} ${months[data.getMonth()]}`
 
     if(firstDayInMonthPosition===0)
     {
         firstDayInMonthPosition = 7;
     }
     console.log(firstDayInMonthPosition)
-    console.log(date.getMonth())
+    console.log(data.getMonth())
 
     for(x=0;x<=dayNames.length-1;x++)
     {
@@ -31,13 +37,34 @@ function CalenendarInit(year, month)
     {
         if(day<firstDayInMonthPosition)
         {
-            calendarList.insertAdjacentHTML('beforeend', `<div class='calendar-list-element'></div>`)
+            calendarList.insertAdjacentHTML('beforeend', `<div class='calendar-list-element' id='${day}'></div>`)
         }
         else
         {
-            calendarList.insertAdjacentHTML('beforeend', `<div class='calendar-list-element'>${day-firstDayInMonthPosition+1}</div>`)
+            let style;
+            if(day%7==0)
+            {
+                style = "color:red";
+            }
+            else
+            {
+                style= "color:black";
+            }
+            calendarList.insertAdjacentHTML('beforeend', `<div class='calendar-list-element' id=${day} style=${style}>${day-firstDayInMonthPosition+1}</div>`)
         }
     }
 }
 
-CalenendarInit();
+function prevMonth()
+{
+    console.log("prev")
+    Calendar(act_year, act_month-=1);
+}
+function nextMonth()
+{
+    console.log("next")
+    Calendar(act_year, act_month+=1);
+}
+
+
+Calendar(act_year, act_month);
