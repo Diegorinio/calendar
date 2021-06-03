@@ -7,37 +7,38 @@ getDaysInMonth = (year, month) =>{
 getFirstDayinMonth = (year, month) =>{
     return new Date(year, month, 1).getDay();
 }
+let calendarList = document.querySelector('.calendar-list');
 let date = new Date();
 let act_month;
 let act_year;
 act_month = date.getMonth();
 act_year = date.getFullYear();
+console.log(act_month)
 function Calendar(year, month)
 {
-    let data = new Date(year, month);
-    let daysInMonth = getDaysInMonth(data.getFullYear(), data.getMonth());
-    let calendarList = document.querySelector('.calendar-list');
-    calendarList.innerHTML = "";
-    let firstDayInMonthPosition = getFirstDayinMonth(data.getFullYear(), data.getMonth())
-    console.log(data)
+    calendarList.className = "calendar-list"
+    let data = new Date(year, month, 1);
+    act_month = month;
+    let daysInMonth = getDaysInMonth(data.getFullYear(), data.getMonth()+1);
+    ClearCalendar();
+    let firstDayInMonthPosition = getFirstDayinMonth(data.getFullYear(), data.getMonth())-1
     document.querySelector('.date-name').innerHTML = `${data.getFullYear()} ${months[data.getMonth()]}`
 
-    if(firstDayInMonthPosition===0)
+    if(firstDayInMonthPosition<0)
     {
-        firstDayInMonthPosition = 7;
+        firstDayInMonthPosition =6;
     }
-    console.log(firstDayInMonthPosition)
-    console.log(data.getMonth())
 
     for(x=0;x<=dayNames.length-1;x++)
     {
         calendarList.insertAdjacentHTML('beforeend', `<div>${dayNames[x]}</div>`)
     }
-    for(day=1;day<=daysInMonth+firstDayInMonthPosition-1;day++)
+
+    for(day=1;day<=daysInMonth + firstDayInMonthPosition;day++)
     {
-        if(day<firstDayInMonthPosition)
+        if(day<= firstDayInMonthPosition)
         {
-            calendarList.insertAdjacentHTML('beforeend', `<div class='calendar-list-element' id='${day}'></div>`)
+            calendarList.insertAdjacentHTML('beforeend',`<div class='calendar-list-element'></div>`)
         }
         else
         {
@@ -50,9 +51,29 @@ function Calendar(year, month)
             {
                 style= "color:black";
             }
-            calendarList.insertAdjacentHTML('beforeend', `<div class='calendar-list-element' id=${day} style=${style}>${day-firstDayInMonthPosition+1}</div>`)
+            calendarList.insertAdjacentHTML('beforeend', `<div class='calendar-list-element' id=${day} style=${style}>${day- firstDayInMonthPosition}</div>`)
         }
     }
+}
+
+function DisplayCalendarMonths()
+{
+    ClearCalendar();
+    calendarList.className = "calendar-list-months"
+    for(month=0;month<=months.length-1;month++)
+    {
+        calendarList.insertAdjacentHTML('beforeend',`<div class='calendar-list-element-year' onclick='Calendar(${act_year},${month})'>${months[month]}</div>`)
+    }
+}
+
+function DisplayMonthDays()
+{
+    Calendar(act_year, act_month)
+}
+
+function ClearCalendar()
+{
+    calendarList.innerHTML = "";
 }
 
 function prevMonth()

@@ -4,9 +4,19 @@
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     max-width: 300px;
 }
+.calendar-list-months
+{
+    display: grid;
+    grid-template-columns:  1fr 1fr 1fr;
+    max-width: 300px;
+}
+.calendar-list-element-year
+{
+    padding: 5px;
+}
 .date-name
 {
-    width: 160px;
+    width: auto;
 }
 .prev
 {
