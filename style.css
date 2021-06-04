@@ -4,19 +4,40 @@
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     max-width: 300px;
 }
+.calendar-list-element-day, .calendar-list-element-months
+{
+    padding: 5px;
+    border: 0.1px solid;
+}
+.note-event-window
+{
+    display: grid;
+    background-color: seashell;
+}
+.note-event-textarea
+{
+    resize: none;
+}
 .calendar-list-months
 {
     display: grid;
     grid-template-columns:  1fr 1fr 1fr;
     max-width: 300px;
 }
-.calendar-list-element-year
+.note-event-window
 {
-    padding: 5px;
+    position:absolute;
+    padding: 6px;
+}
+.calendar-list-years
+{
+    display: grid;
+    grid-template-columns:  1fr 1fr 1fr;
+    max-width: 300px;
 }
 .date-name
 {
-    width: auto;
+    width: 150px;
 }
 .prev
 {
