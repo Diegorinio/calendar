@@ -1,13 +1,113 @@
+#Calendar
+{
+    padding: 10px;
+}
+.calendar-view-options
+{
+    margin-bottom: 2px;
+}
+.calendar-view-options .years, .calendar-view-options .months, .calendar-view-options .days
+{
+    padding: 10px;
+    background-color: rgb(87, 200, 228);
+    border: none;
+    color:white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 17px;
+}
+.calendar-view-options .years:hover, .calendar-view-options .months:hover, .calendar-view-options .days:hover
+{
+    background-color: rgb(46, 149, 175);
+    cursor: pointer;
+}
+.calendar-year-select
+{
+    background-color: rgb(232, 253, 255);
+    border-style: none;
+    padding: 3px;
+    text-align: center;
+    margin-right: 2px;
+}
+.calendar-year-select-btn
+{
+    background-color: rgb(158, 255, 250);
+    border-style: none;
+}
+.calendar-year-select-btn:hover
+{
+    background-color: rgb(19, 255, 243);
+    border-color: rgb(0, 255, 242);
+    font-weight: bold;
+    cursor: pointer;
+}
+.calendar-options
+{
+    margin-left: 50px;
+}
+.prev, .next
+{
+    background-color: rgb(73, 196, 226);
+    border: none;
+    color:white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 21px;
+    display: inline-block;
+}
+.prev:hover, .next:hover
+{
+    background-color: rgb(25, 209, 255);
+    cursor: pointer;
+}
+.date-name
+{
+    text-align: center;
+    display: inline-block;
+    width: 130px;
+    cursor: pointer;
+    font-size: 19px;
+}
+.date-name:hover
+{
+    background-color: rgb(209, 209, 209);
+}
+.calendar-body
+{
+    height: 50vh;
+}
+.calendar-week-days
+{
+    text-align: center;
+    padding: 2px;
+}
 .calendar-list
 {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     max-width: 300px;
+    background-color: rgb(206, 253, 255);
 }
 .calendar-list-element-day, .calendar-list-element-months
 {
+    background-color: rgb(8, 190, 245);
     padding: 5px;
-    border: 0.1px solid;
+    border: 1px solid;
+    border-color: white;
+    text-align: center;
+    cursor: pointer;
+    font-size: 18px;
+}
+.calendar-list-element-months:hover
+{
+    background-color: rgb(205, 243, 255);
+    color: white;
+}
+.calendar-list-element-day:hover
+{
+    cursor: cell;
+    background-color: rgb(149, 230, 255);
+    color:white
 }
 .note-event-window
 {
@@ -23,31 +123,64 @@
     display: grid;
     grid-template-columns:  1fr 1fr 1fr;
     max-width: 300px;
+    padding: 40px;
+}
+.note-event-box
+{
+    color:white;
+    display: inline-block;
+    padding: 20px;
+    background-color: rgb(66, 66, 255);
+    margin-right: 3px;
+    margin-top: 5px;
+    font-size: 21px;
 }
 .note-event-window
 {
     position:absolute;
     padding: 6px;
 }
+.note-event-window-val
+{
+    text-align: center;
+    color:blue;
+    font-size: 17px;
+}
+.note-event-window-msg
+{
+    text-align: center;
+    color:red;
+    font-size: 16px;
+    padding: 2px;
+}
 .calendar-list-years
 {
     display: grid;
     grid-template-columns:  1fr 1fr 1fr;
     max-width: 300px;
+    padding: 40px;
 }
-.date-name
+.event-note-btn-save
 {
-    width: 150px;
+    background-color: rgb(70, 230, 70);
+    border-style: none;
+    padding: 3px;
 }
-.prev
+.event-note-btn-save:hover
 {
-    display: inline-block;
+    background-color: rgb(0, 255, 0);
+    cursor: pointer;
+    font-weight: bold;
 }
-.date-name
+.event-note-btn-exit
 {
-    display: inline-block;
+    background-color: rgb(255, 87, 87);
+    border-style: none;
+    padding: 3px;
 }
-.next
+.event-note-btn-exit:hover
 {
-display: inline-block;
+    background-color: red;
+    cursor: pointer;
+    font-weight: bold;
 }
