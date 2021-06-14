@@ -4,7 +4,9 @@ const dayNames = ["pon", "wto", "śrd", "czw", "pią", "sob", "nie"]
 var calendarList;
 var act_month;
 var act_year;
-init = () =>{
+
+function init()
+{
     let lastSeenView = GetViewJSON();
     calendarList = document.querySelector('.calendar-list');
     if(lastSeenView != null)
@@ -22,7 +24,6 @@ init = () =>{
             case "calendar-days":
                 Calendar(GetActualYear(), GetActualMonth());
         }
-        console.log(lastSeenView)
     }
     else
     {
@@ -34,10 +35,10 @@ init = () =>{
     ShowSavedEvents();
 }
 
-getDaysInMonth = (year, month) =>{
+function getDaysInMonth(year, month){
     return new Date(year, month,0).getDate();
 }
-getFirstDayinMonth = (year, month) =>{
+function getFirstDayinMonth(year, month){
     return new Date(year, month, 1).getDay();
 }
 
@@ -82,7 +83,7 @@ function Calendar(year, month)
     }
 }
 
-DisplayCalendarMonths=()=>
+function DisplayCalendarMonths()
 {
     SetView("calendar-months", GetActualYear(), GetActualMonth())
     ClearCalendar();
@@ -139,7 +140,7 @@ DayEventWindow= (e)=>
     }
 }
 
-function AddEventOnThisDay(day_id, message)
+AddEventOnThisDay = (day_id, message)=>
 {
     console.log(day_id, act_month, act_year);
     if(message.length<0)
@@ -188,16 +189,17 @@ function ShowSavedEvents()
 
     }
 }
-GetSavedEvents=()=>
+function GetSavedEvents()
 {
     return localStorage.getItem("notes")
 }
-SetView = (model, year, month) =>{
+function SetView(model, year, month)
+{
     const view = {view: model, year: year, month: month}
     localStorage.setItem("view", JSON.stringify(view))
 }
 
-GetViewJSON = ()=>{
+function GetViewJSON(){
     return JSON.parse(localStorage.getItem("view"));
 }
 function DisplayCalendarYears()
@@ -225,10 +227,10 @@ function DisplayCalendarYears()
     })
     calendarList.appendChild(button);
 }
-GetActualYear = () =>{
+function GetActualYear(){
     return act_year;
 }
-GetActualMonth = () =>{
+function GetActualMonth(){
     return act_month;
 }
 function setActualYear(year)
@@ -253,12 +255,12 @@ function ClearCalendar()
     calendarList.innerHTML = "";
 }
 
-prevMonth = ()=>
+function prevMonth()
 {
     console.log("prev")
     Calendar(act_year, GetActualMonth()-1);
 }
-nextMonth =()=>
+function nextMonth()
 {
     console.log("next")
     Calendar(act_year, GetActualMonth()+1);
